@@ -1,8 +1,7 @@
-export async function getPosts() {
+export async function getPosts(page: number = 1) {
   try {
     const posts = await fetch(
-      `https://gregrickaby.com/wp-json/wp/v2/posts?categories=3&per_page=20`,
-      { next: { revalidate: 60 } }
+      `https://gregrickaby.com/wp-json/wp/v2/posts?categories=3&context=embed&page=${page}`
     );
 
     if (!posts.ok) {
@@ -18,8 +17,7 @@ export async function getPosts() {
 export async function getFeaturedImage(id: number) {
   try {
     const featuredImage = await fetch(
-      `https://gregrickaby.com/wp-json/wp/v2/media/${id}`,
-      { next: { revalidate: 120 } }
+      `https://gregrickaby.com/wp-json/wp/v2/media/${id}`
     );
 
     if (!featuredImage.ok) {
