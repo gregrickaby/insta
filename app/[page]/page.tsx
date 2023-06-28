@@ -32,9 +32,9 @@ export default async function Page({ params }: PageProps) {
                 >
                   <Image
                     alt={featuredImage.alt_text}
-                    height={featuredImage.media_details.sizes.medium.height}
-                    src={featuredImage.media_details.sizes.medium.source_url}
-                    width={featuredImage.media_details.sizes.medium.width}
+                    height={featuredImage.media_details.height}
+                    src={featuredImage.source_url}
+                    width={featuredImage.media_details.width}
                   />
                 </a>
               )}
