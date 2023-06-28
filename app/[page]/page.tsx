@@ -1,11 +1,15 @@
+import { getFeaturedImage, getPosts } from "@/lib/functions";
 import Image from "next/image";
-import { getPosts, getFeaturedImage } from "@/lib/functions";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default async function Home() {
-  const page = 1;
-  const posts = await getPosts();
+interface PageProps {
+  params: { page: string };
+}
+
+export default async function Page({ params }: PageProps) {
+  const page = Number(params.page);
+  const posts = await getPosts(page);
 
   if (!posts) {
     notFound();
@@ -46,7 +50,10 @@ export default async function Home() {
             </article>
           );
         })}
-      <Link href={`/${page + 1}`}>Load More</Link>
+      <nav className="flex justify-between w-full">
+        {page > 1 && <Link href={`/${page - 1}`}>⏪ Previous Page</Link>}
+        <Link href={`/${page + 1}`}>Next Page ⏩</Link>
+      </nav>
     </main>
   );
 }
