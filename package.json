@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "rm -rf .next && next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "rm -rf .next && next dev",
+    "format": "npx prettier '**/*.{js,jsx,ts,tsx,md,html,css,json,yml}' --config=.prettierrc.js --write || true",
+    "lint": "npm run format && npm run lint:js",
+    "lint:js": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "next": "^13.4.7",

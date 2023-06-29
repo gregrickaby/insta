@@ -4,11 +4,11 @@ const nextConfig = {
     unoptimized: true,
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "gregrickaby.com",
-      },
-    ],
-  },
-};
+        protocol: 'https',
+        hostname: 'gregrickaby.com'
+      }
+    ]
+  }
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
